@@ -23,6 +23,41 @@ header h1 {
   margin: 0;
 }
 
+.input-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+#interesse-input {
+  flex: 1;
+  padding: 12px 15px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+#interesse-input:focus {
+  border-color: #007bff;
+}
+
+#btn-adicionar {
+  padding: 12px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#btn-adicionar:hover {
+  background-color: #0056b3;
+}
+
 #lista-ul {
   list-style-type: none;
   padding: 0;
