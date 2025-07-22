@@ -1,9 +1,21 @@
+// Variável para armazenar o estado anterior da lista
+let ultimaListaCarregada = "";
+
 // Função para carregar os interesses do localStorage (Exercício 1)
 const carregarInteresses = () => {
-  const listaInteresses = document.querySelector("#lista-ul");
-  listaInteresses.innerHTML = "";
-
   const interessesArmazenados = localStorage.getItem("meus-interesses");
+  const interessesString = interessesArmazenados || "[]";
+
+  // Verificar se houve mudanças na lista
+  if (interessesString === ultimaListaCarregada) {
+    return; // Não recriar se não houve mudanças
+  }
+
+  // Atualizar o estado anterior
+  ultimaListaCarregada = interessesString;
+
+  const listaInteresses = document.querySelector("#lista-ul");
+  listaInteresses.innerHTML = ""; // Limpeza dos dados antes de carregar
 
   if (interessesArmazenados) {
     const interesses = JSON.parse(interessesArmazenados);
@@ -48,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Carregar interesses quando a página carregar
   carregarInteresses();
 
-  // Atualizar a lista a cada 1 segundo (1000 milissegundos)(Exercício 3)
+  // Exercício 3 - Atualizar a lista a cada 1 segundo (1000 milissegundos)
   setInterval(carregarInteresses, 1000);
 
   // Adicionar evento de clique ao botão
