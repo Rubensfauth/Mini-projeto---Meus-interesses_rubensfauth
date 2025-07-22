@@ -64,7 +64,7 @@ const limparLista = () => {
   carregarInteresses();
 };
 
-// ========== EXERCÍCIO 5 - BUSCAR NOTÍCIAS DO IBGE ==========
+// ========== EXERCÍCIO 5 & 6 - BUSCAR NOTÍCIAS DO IBGE ==========
 const buscarNoticiasIBGE = async () => {
   const noticiaConteudo = document.getElementById("noticia-conteudo");
 
@@ -78,15 +78,30 @@ const buscarNoticiasIBGE = async () => {
     );
 
     // 2. Converter para JSON usando callback
-    const data = await response.json();
+    const resposta = await response.json();
 
-    // 3. Pegar o primeiro elemento da propriedade "items"
-    if (data.items && data.items.length > 0) {
-      const primeiraNoticia = data.items[0];
+    // 3. EXERCÍCIO 6 - Pegar a primeira notícia e suas informações
+    if (resposta.items && resposta.items.length > 0) {
+      // Acessar conforme especificado: resposta.items[0].titulo
+      const primeiraNoticia = resposta.items[0];
       const titulo = primeiraNoticia.titulo;
+      const introducao =
+        primeiraNoticia.introducao || "Introdução não disponível";
+      const dataPublicacao = primeiraNoticia.data_publicacao;
 
-      // Exibir o título da primeira notícia
-      noticiaConteudo.innerHTML = `<p class="noticia-titulo">${titulo}</p>`;
+      // Formatar a data se disponível
+      const dataFormatada = dataPublicacao
+        ? new Date(dataPublicacao).toLocaleDateString("pt-BR")
+        : "Data não informada";
+
+      // EXERCÍCIO 6 - Inserir a notícia de destaque na seção com a classe correta
+      noticiaConteudo.innerHTML = `
+        <div class="noticia-destaque">
+          <h3 class="noticia-titulo">${titulo}</h3>
+          <p class="noticia-data">📅 ${dataFormatada}</p>
+          <p class="noticia-introducao">${introducao}</p>
+        </div>
+      `;
     } else {
       noticiaConteudo.innerHTML =
         '<p class="erro-noticia">Nenhuma notícia encontrada.</p>';
