@@ -48,6 +48,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Carregar interesses quando a página carregar
   carregarInteresses();
 
+  // Atualizar a lista a cada 1 segundo (1000 milissegundos)(Exercício 3)
+  setInterval(carregarInteresses, 1000);
+
   // Adicionar evento de clique ao botão
   document
     .getElementById("btn-adicionar")
