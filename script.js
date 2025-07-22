@@ -55,6 +55,15 @@ const adicionarInteresse = () => {
   carregarInteresses();
 };
 
+// Função para limpar toda a lista (Exercício 4)
+const limparLista = () => {
+  // Remover a chave do localStorage
+  localStorage.removeItem("meus-interesses");
+
+  // Atualizar a lista no DOM para refletir a mudança
+  carregarInteresses();
+};
+
 // Event listeners
 document.addEventListener("DOMContentLoaded", () => {
   // Carregar interesses quando a página carregar
@@ -63,8 +72,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // Exercício 3 - Atualizar a lista a cada 1 segundo (1000 milissegundos)
   setInterval(carregarInteresses, 1000);
 
-  // Adicionar evento de clique ao botão
+  // Adicionar evento de clique ao botão adicionar
   document
     .getElementById("btn-adicionar")
     .addEventListener("click", adicionarInteresse);
+
+  // Exercício 4 - Adicionar evento de clique ao botão limpar
+  document.getElementById("btn-limpar").addEventListener("click", limparLista);
 });
