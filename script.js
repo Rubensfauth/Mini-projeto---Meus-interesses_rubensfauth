@@ -64,10 +64,47 @@ const limparLista = () => {
   carregarInteresses();
 };
 
+// ========== EXERCÍCIO 5 - BUSCAR NOTÍCIAS DO IBGE ==========
+const buscarNoticiasIBGE = async () => {
+  const noticiaConteudo = document.getElementById("noticia-conteudo");
+
+  // Mostrar loading
+  noticiaConteudo.innerHTML = '<p class="loading">Carregando notícia...</p>';
+
+  try {
+    // 1. Fazer requisição usando fetch()
+    const response = await fetch(
+      "https://servicodados.ibge.gov.br/api/v3/noticias/?tipo=release"
+    );
+
+    // 2. Converter para JSON usando callback
+    const data = await response.json();
+
+    // 3. Pegar o primeiro elemento da propriedade "items"
+    if (data.items && data.items.length > 0) {
+      const primeiraNoticia = data.items[0];
+      const titulo = primeiraNoticia.titulo;
+
+      // Exibir o título da primeira notícia
+      noticiaConteudo.innerHTML = `<p class="noticia-titulo">${titulo}</p>`;
+    } else {
+      noticiaConteudo.innerHTML =
+        '<p class="erro-noticia">Nenhuma notícia encontrada.</p>';
+    }
+  } catch (error) {
+    console.error("Erro ao buscar notícias:", error);
+    noticiaConteudo.innerHTML =
+      '<p class="erro-noticia">Erro ao carregar notícia. Tente novamente.</p>';
+  }
+};
+
 // Event listeners
 document.addEventListener("DOMContentLoaded", () => {
   // Carregar interesses quando a página carregar
   carregarInteresses();
+
+  // ========== EXERCÍCIO 5 - Buscar notícias quando a página carregar ==========
+  buscarNoticiasIBGE();
 
   // Exercício 3 - Atualizar a lista a cada 1 segundo (1000 milissegundos)
   setInterval(carregarInteresses, 1000);
@@ -79,4 +116,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Exercício 4 - Adicionar evento de clique ao botão limpar
   document.getElementById("btn-limpar").addEventListener("click", limparLista);
+
+  // ========== EXERCÍCIO 5 - Evento para atualizar notícia ==========
+  document
+    .getElementById("btn-atualizar")
+    .addEventListener("click", buscarNoticiasIBGE);
 });
