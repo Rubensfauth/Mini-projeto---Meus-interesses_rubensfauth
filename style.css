@@ -174,3 +174,19 @@ footer p {
 .btn-atualizar:hover {
   background-color: #218838;
 }
+
+.logotipo {
+  max-width: 364px;
+  height: auto;
+  margin-bottom: 20px, 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 480px) {
+  .logotipo {
+    max-width: 80%;
+    height: auto;
+  }
+}
