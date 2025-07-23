@@ -1,31 +1,56 @@
 body {
   font-family: Arial, sans-serif;
-  max-width: 800px;
-  margin: 50px auto;
-  padding: 20px;
+  margin: 0;
+  padding: 15px;
   background-color: #f5f5f5;
+  box-sizing: border-box;
 }
+
+* {
+  box-sizing: border-box;
+}
+
 .container {
   background-color: white;
-  padding: 30px;
+  padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: none;
 }
+
 header {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
+
 header h1 {
   color: #333;
   margin: 0;
+  font-size: 1.5rem;
 }
+
+/* LOGOTIPO - Mobile First */
+.logotipo {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  margin-bottom: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* CONTAINER DE INPUT - Mobile First: Vertical Stack */
 .input-container {
   display: flex;
+  flex-direction: column;
   gap: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
+
 #interesse-input {
-  flex: 1;
+  width: 100%;
   padding: 12px 15px;
   border: 2px solid #ddd;
   border-radius: 5px;
@@ -33,40 +58,48 @@ header h1 {
   outline: none;
   transition: border-color 0.3s ease;
 }
+
 #interesse-input:focus {
   border-color: #007bff;
 }
-#btn-adicionar {
+
+/* BOTÕES - Mobile: Full Width */
+#btn-adicionar,
+#btn-limpar {
+  width: 100%;
   padding: 12px 20px;
-  background-color: #007bff;
-  color: white;
   border: none;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
+#btn-adicionar {
+  background-color: #007bff;
+  color: white;
+}
+
 #btn-adicionar:hover {
   background-color: #0056b3;
 }
+
 #btn-limpar {
-  padding: 12px 20px;
   background-color: #dc3545;
   color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
 }
+
 #btn-limpar:hover {
   background-color: #c82333;
 }
+
+/* LISTA */
 #lista-ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
+
 #lista-ul li {
   background-color: #f8f9fa;
   padding: 12px 15px;
@@ -74,81 +107,81 @@ header h1 {
   border-radius: 5px;
   border-left: 4px solid #007bff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  word-wrap: break-word;
 }
+
 #lista-ul li:hover {
   background-color: #e9ecef;
   transform: translateX(5px);
   transition: all 0.3s ease;
 }
+
 .empty-message {
   text-align: center;
   color: #666;
   font-style: italic;
   padding: 20px;
 }
-footer {
-  margin-top: 30px;
-  text-align: center;
-  color: #666;
-  font-size: 0.9em;
-  border-top: 1px solid #eee;
-  padding-top: 15px;
-}
-footer p {
-  margin: 0;
-}
 
-/* ========== ESTILOS PARA NOTÍCIAS - EXERCÍCIO 5 & 6 ========== */
+/* SEÇÃO DE NOTÍCIAS - Mobile */
 .noticias-container {
-  margin-top: 40px;
-  padding: 20px;
+  margin-top: 30px;
+  padding: 15px;
   background-color: #f8f9fa;
   border-radius: 10px;
   border: 1px solid #dee2e6;
 }
+
 .noticias-container h2 {
   color: #333;
   margin-bottom: 15px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 10px;
+  font-size: 1.2rem;
 }
+
 .loading {
   color: #007bff;
   font-style: italic;
 }
 
-/* EXERCÍCIO 6 - Estilos para a notícia de destaque */
+/* NOTÍCIA DESTAQUE */
 .noticia-destaque {
   background-color: white;
-  padding: 20px;
+  padding: 15px;
   border-radius: 8px;
   border-left: 4px solid #28a745;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
 }
+
 .noticia-destaque:hover {
   transform: translateY(-2px);
 }
+
 .noticia-titulo {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   line-height: 1.4;
   color: #2c3e50;
   margin: 0 0 10px 0;
 }
+
 .noticia-data {
   color: #6c757d;
-  font-size: 14px;
-  margin: 0 0 15px 0;
+  font-size: 13px;
+  margin: 0 0 12px 0;
   display: flex;
   align-items: center;
   gap: 5px;
 }
+
 .noticia-introducao {
   color: #495057;
-  font-size: 15px;
-  line-height: 1.6;
+  font-size: 14px;
+  line-height: 1.5;
   margin: 0;
   text-align: justify;
 }
@@ -157,36 +190,136 @@ footer p {
   color: #dc3545;
   font-style: italic;
   background-color: #f8d7da;
-  padding: 15px;
+  padding: 12px;
   border-radius: 5px;
   border-left: 4px solid #dc3545;
+  font-size: 14px;
 }
+
 .btn-atualizar {
-  padding: 8px 15px;
+  padding: 8px 12px;
   background-color: #28a745;
   color: white;
   border: none;
   border-radius: 3px;
-  font-size: 14px;
+  font-size: 12px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  width: 100%;
 }
+
 .btn-atualizar:hover {
   background-color: #218838;
 }
 
-.logotipo {
-  max-width: 364px;
-  height: auto;
-  margin-bottom: 20px, 10px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+/* FOOTER */
+footer {
+  margin-top: 25px;
+  text-align: center;
+  color: #666;
+  font-size: 0.8em;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
 }
 
-@media (max-width: 480px) {
+footer p {
+  margin: 5px 0;
+}
+
+/* ========== TABLET: 480px+ ========== */
+@media (min-width: 480px) {
+  body {
+    padding: 20px;
+  }
+
+  .container {
+    padding: 25px;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+
   .logotipo {
-    max-width: 80%;
-    height: auto;
+    max-width: 364px;
+    margin-bottom: 20px;
+  }
+
+  /* Botões lado a lado em tablets */
+  .input-container {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  #interesse-input {
+    flex: 1;
+  }
+
+  #btn-adicionar,
+  #btn-limpar {
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .noticias-container {
+    padding: 20px;
+  }
+
+  .noticias-container h2 {
+    flex-direction: row;
+    align-items: center;
+    font-size: 1.4rem;
+  }
+
+  .btn-atualizar {
+    width: auto;
+    font-size: 14px;
+  }
+
+  .noticia-titulo {
+    font-size: 18px;
+  }
+
+  .noticia-data {
+    font-size: 14px;
+  }
+
+  .noticia-introducao {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .noticia-destaque {
+    padding: 20px;
+  }
+}
+
+/* ========== DESKTOP: 768px+ ========== */
+@media (min-width: 768px) {
+  body {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+  }
+
+  .container {
+    padding: 30px;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  .input-container {
+    margin-bottom: 30px;
+  }
+
+  .noticias-container {
+    margin-top: 40px;
+  }
+
+  footer {
+    margin-top: 30px;
+    font-size: 0.9em;
   }
 }
